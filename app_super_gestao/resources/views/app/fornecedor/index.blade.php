@@ -25,7 +25,6 @@
     <h3>Não existem fornecedores cadastrados</h3>
 @endif
 
-
 Fornecedor: {{ $fornecedores[0]['nome'] }}
 <br />
 Status: {{ $fornecedores[0]['status']}}
@@ -37,7 +36,6 @@ Status: {{ $fornecedores[0]['status']}}
 @unless($fornecedores[0]['status'] == 'S')<!-- se o retorno da condição for falso-->
     Fornecedor inativo
 @endunless
-
 --}}
 
 @isset($fornecedores)<!-- Verifica se a variavel esta definida-->
@@ -47,5 +45,8 @@ Status: {{ $fornecedores[0]['status']}}
     <br />
     @isset($fornecedores[0]['cnpj'])
         CNPJ: {{ $fornecedores[0]['cnpj']}}
+        @empty($fornecedores[0]['cnpj'])
+            Vazio
+        @endempty
     @endisset 
 @endisset 
