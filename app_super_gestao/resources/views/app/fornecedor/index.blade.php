@@ -39,20 +39,22 @@ Status: {{ $fornecedores[0]['status']}}
 --}}
 
 @isset($fornecedores)<!-- Verifica se a variavel esta definida-->
-    {{-- @for($i = 0; isset($fornecedores[$i]); $i++)--}}
+    {{-- @for($i = 0; isset($fornecedores[$i]); $i++)
     @php $i = 0 @endphp
-    @while(isset($fornecedores[$i]))
-        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+    @while(isset($fornecedores[$i]))--}}
+    @foreach($fornecedores as $indice => $fornecedor)
+        Fornecedor: {{ $fornecedor['nome'] }}
         <br />
-        Status: {{ $fornecedores[$i]['status']}}
+        Status: {{ $fornecedor['status']}}
         <br />
-        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido'}}
+        CNPJ: {{ $fornecedor['cnpj'] ?? 'Dado não foi preenchido'}}
         <br />
-        Telefone: ({{$fornecedores[$i]['ddd'] ?? ''}}) {{$fornecedores[0]['telefone'] ?? ''}}
+        Telefone: ({{$fornecedor['ddd'] ?? ''}}) {{$fornecedor['telefone'] ?? ''}}
         <hr>
-        @php $i++ @endphp
+    @endforeach
+       {{-- @php $i++ @endphp
     @endwhile
-   {{-- @endfor --}}
+    @endfor --}}
     {{--@switch($fornecedores[0]['ddd'])
         @case('11')
             São Paulo - SP
