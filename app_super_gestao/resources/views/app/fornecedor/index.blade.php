@@ -39,7 +39,9 @@ Status: {{ $fornecedores[0]['status']}}
 --}}
 
 @isset($fornecedores)<!-- Verifica se a variavel esta definida-->
-    @for($i = 0; isset($fornecedores[$i]); $i++)
+    {{-- @for($i = 0; isset($fornecedores[$i]); $i++)--}}
+    @php $i = 0 @endphp
+    @while(isset($fornecedores[$i]))
         Fornecedor: {{ $fornecedores[$i]['nome'] }}
         <br />
         Status: {{ $fornecedores[$i]['status']}}
@@ -48,7 +50,9 @@ Status: {{ $fornecedores[0]['status']}}
         <br />
         Telefone: ({{$fornecedores[$i]['ddd'] ?? ''}}) {{$fornecedores[0]['telefone'] ?? ''}}
         <hr>
-    @endfor
+        @php $i++ @endphp
+    @endwhile
+   {{-- @endfor --}}
     {{--@switch($fornecedores[0]['ddd'])
         @case('11')
             São Paulo - SP
