@@ -43,6 +43,8 @@ Status: {{ $fornecedores[0]['status']}}
     @php $i = 0 @endphp
     @while(isset($fornecedores[$i]))--}}
     @forelse($fornecedores as $indice => $fornecedor)
+        Interação atual: {{ $loop->iteration }}
+        <br>
         Fornecedor: {{ $fornecedor['nome'] }}
         <br />
         Status: {{ $fornecedor['status']}}
@@ -50,6 +52,16 @@ Status: {{ $fornecedores[0]['status']}}
         CNPJ: {{ $fornecedor['cnpj'] ?? 'Dado não foi preenchido'}}
         <br />
         Telefone: ({{$fornecedor['ddd'] ?? ''}}) {{$fornecedor['telefone'] ?? ''}}
+        <br>
+        @if($loop->first)
+            Primeira interação do loop
+        @endif
+
+        @if($loop->last)
+            Ultima interação do loop
+            <br>
+            Total de registros {{$loop->count}}
+        @endif
         <hr>
     @empty
         Não foram enviados registros
