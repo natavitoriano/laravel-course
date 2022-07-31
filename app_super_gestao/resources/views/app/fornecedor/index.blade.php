@@ -43,10 +43,14 @@ Status: {{ $fornecedores[0]['status']}}
     <br />
     Status: {{ $fornecedores[0]['status']}}
     <br />
+    CNPJ: {{ $fornecedores[0]['cnpj'] ?? 'Dado não foi preenchido'}}
+    <br />
+    {{--
     @isset($fornecedores[0]['cnpj'])
         CNPJ: {{ $fornecedores[0]['cnpj']}}
         @empty($fornecedores[0]['cnpj'])
             Vazio
         @endempty
     @endisset 
+    --}}
 @endisset 
