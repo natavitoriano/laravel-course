@@ -42,7 +42,7 @@ Status: {{ $fornecedores[0]['status']}}
     {{-- @for($i = 0; isset($fornecedores[$i]); $i++)
     @php $i = 0 @endphp
     @while(isset($fornecedores[$i]))--}}
-    @foreach($fornecedores as $indice => $fornecedor)
+    @forelse($fornecedores as $indice => $fornecedor)
         Fornecedor: {{ $fornecedor['nome'] }}
         <br />
         Status: {{ $fornecedor['status']}}
@@ -51,7 +51,9 @@ Status: {{ $fornecedores[0]['status']}}
         <br />
         Telefone: ({{$fornecedor['ddd'] ?? ''}}) {{$fornecedor['telefone'] ?? ''}}
         <hr>
-    @endforeach
+    @empty
+        Não foram enviados registros
+    @endforelse
        {{-- @php $i++ @endphp
     @endwhile
     @endfor --}}
